@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Chart Tool",
+    "description": "Render declarative charts (line, bar, area, scatter, pie, heatmap, candlestick, boxplot) as interactive cards in the conversation."
+  }
+}

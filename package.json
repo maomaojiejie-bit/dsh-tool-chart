@@ -1,0 +1,86 @@
+{
+  "name": "dsh-tool-chart",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Declarative chart tool for the DeepSeek Harness: a model-facing `chart` tool plus an interactive in-conversation chart card.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": "^22.13.0 || >=24.0.0"
+  },
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "types": "./lib/types/client.d.ts",
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "files": [
+    "lib",
+    "src",
+    "locale",
+    "icon.svg",
+    "cordis.patch.yml",
+    "build.mjs",
+    "tsconfig.json",
+    "tsdown.config.ts",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node build.mjs",
+    "prepare": "node build.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "node tests/run.mjs",
+    "test:host": "node --import ./tests/harness-register.mjs tests/host-smoke.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-tool"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": ">=4.0.0 <5",
+    "@deepseek-ai/schemastery": ">=3.18.4 <4",
+    "react": ">=18.2.0 <19"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": {
+      "optional": true
+    },
+    "@deepseek-ai/schemastery": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": ">=4.0.0 <5",
+    "@deepseek-ai/dsh-tools": "0.2.0-rc.2",
+    "@deepseek-ai/schemastery": ">=3.18.4 <4",
+    "@types/react": ">=18.2.0 <19",
+    "react": ">=18.2.0 <19",
+    "tsdown": "^0.22.2",
+    "typescript": "^6.0.3"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "cordis",
+    "chart",
+    "visualization"
+  ]
+}

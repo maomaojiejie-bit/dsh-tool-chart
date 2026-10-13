@@ -1,0 +1,24 @@
+# One bundle = one Loader row named after the package. The `./client` export of
+# that same row carries the browser half (the modules node half scans every
+# ENABLED row's `dsh.client` manifest into the boot graph), so no separate
+# `dsh-tool-chart/client` row is needed.
+#
+# Everything deployment-variable is a Config field, e.g.:
+#
+#   - insert:
+#       - id: tool-chart
+#         name: dsh-tool-chart
+#         config:
+#           defaultTheme: dark
+#           enabledTypes: [line, bar, pie]
+#           maxSeries: 8
+#           themes:
+#             dark:
+#               mode: dark
+#               palette:
+#                 series: ['#6E9BFF', '#F5B95C']
+#                 positive: '#E64545'
+#                 negative: '#2EA84F'
+- insert:
+    - id: tool-chart
+      name: dsh-tool-chart
